@@ -1,6 +1,6 @@
 {
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "TABTAB",
+  "description": "A 360 degree manager for your tabs",
   "version": "1.0",
   "browser_action": {
     "default_popup": "hello.html",
@@ -13,7 +13,7 @@
         "default": "Ctrl+Shift+F",
         "mac": "MacCtrl+Shift+F"
       },
-      "description": "Opens hello.html"
+      "description": "Open the menu option"
     }
   }
 }
