@@ -5,3 +5,6 @@
 ### Links
 
 https://developer.chrome.com/extensions/manifest
+
+
+https://developer.chrome.com/extensions/getstarted
