@@ -11,7 +11,8 @@ Fast forward it.
 3. Showing the usage stats for the user
 4. shortcuts like
 5. Hide other tabs which are open
-6.
+
+Research about how to make devtools:
 
 command + tab
 jumping across tabs
