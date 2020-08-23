@@ -32,6 +32,10 @@
     "48": "images/get_started48.png",
     "128": "images/get_started128.png"
   },
+  "externally_connectable": {
+    "matches": ["*://*.chrome.com/*"]
+  },
+
   "options_page": "options.html",
   "devtools_page": "devtools.html"
 }

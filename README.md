@@ -20,3 +20,12 @@ jumping across tabs
 https://developer.chrome.com/extensions/manifest
 
 https://developer.chrome.com/extensions/getstarted
+
+https://developer.chrome.com/extensions/single_purpose
+
+## High level overview
+
+1. There can be options page.
+2. Options pages can be debugged using background.js file. This background.js file need to be configured in manifest.json
+3. There can be something like on click of extension icon beside chrome url header. It can pe popup like when you click on reactjs extension on top. The UI for this is kept in popup.html.
+4. default_icon field in top can
