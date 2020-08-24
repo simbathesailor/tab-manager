@@ -17,6 +17,14 @@ chrome.runtime.onInstalled.addListener(function () {
       },
     ]);
   });
+
+  chrome.runtime.onMessage.addListener(function (message, callback) {
+    if (message == "reload") {
+      chrome.tabs.executeScript({
+        code: 'document.body.style.backgroundColor="orange"',
+      });
+    }
+  });
 });
 
 // chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
