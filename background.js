@@ -1,5 +1,21 @@
 // First event
 
+// If you define default_popup in manifest, you cannot use chrome.browserAction.onClicked.addListener method,
+// it will throw error
+// chrome.browserAction.onClicked.addListener(buttonClicked);
+
+// function buttonClicked() {
+//   console.log("button is clicked in buttonclicked handler");
+// }
+
+// You can send the message from all the tab or unique tab using
+
+// let msg: {
+//   txt: "hello"
+// }
+
+// chrome.tabs.sendMessage(tab.id, msg)
+
 chrome.runtime.onInstalled.addListener(function () {
   chrome.storage.sync.set({ color: "#3aa757" }, function () {
     console.log("The color is green.");

@@ -34,8 +34,12 @@
   },
 
   "content_security_policy": "object-src 'self'; child-src 'self'; default-src 'self';",
-
   "options_page": "options.html",
   "devtools_page": "devtools.html",
-  "web_accessible_resources": ["pages/*"]
+  "content_scripts": [
+    {
+      "matches": ["https://developer.chrome.com/*"],
+      "js": ["pages/suspendedpage.js"]
+    }
+  ]
 }
