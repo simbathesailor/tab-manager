@@ -41,6 +41,25 @@ chrome.runtime.onInstalled.addListener(function () {
       });
     }
   });
+
+  // chrome.runtime.onInstalled.addListener(function () {
+  //   chrome.contextMenus.create({
+  //     id: "sampleContextMenu",
+  //     title: "Sample Context Menu",
+  //     contexts: ["selection"],
+  //   });
+  // });
+
+  chrome.contextMenus.create({
+    id: "sampleContextMenu",
+    title: "Sample Context Menu",
+    contexts: ["selection"],
+  });
+
+  // This will run when a bookmark is created. need permission
+  // chrome.bookmarks.onCreated.addListener(function () {
+  //   // do something
+  // });
 });
 
 // chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -51,3 +70,5 @@ chrome.runtime.onInstalled.addListener(function () {
 //   );
 //   if (request.greeting == "hello") sendResponse({ farewell: "goodbye" });
 // });
+
+// Do not register listeners asynchronously
