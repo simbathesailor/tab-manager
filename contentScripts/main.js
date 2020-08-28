@@ -1,4 +1,4 @@
-let limit = 10 * 10000000000000000; // in seconds
+let limit = 10 * 1000000000000000000; // in seconds
 
 console.log("some value");
 
@@ -9,9 +9,14 @@ console.log(
   startTimeWHenStartedSHowingThePage
 );
 
+Notification.requestPermission(function (status) {
+  console.log("Notification permission status:", status);
+});
 // checking when time will happen
+
 const timeoutId = window.setTimeout(() => {
   // chrome.tabs.getCurrent(function ()) doesnot work
+
   chrome.runtime.sendMessage(
     chrome.runtime.id,
     { type: "trigger_redirection_tosuspended_page" },

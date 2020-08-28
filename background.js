@@ -41,10 +41,31 @@ chrome.runtime.onInstalled.addListener(function () {
     if (message.type === "trigger_redirection_tosuspended_page") {
       // I need to create the redirection link for the
       const { tab } = sender;
-      chrome.tabs.update(tab.id, {
-        url: chrome.runtime.getURL(
-          `pages/suspendedpage.html?url=${tab.url}&title=${tab.title}`
-        ),
+
+      // FOr not i have to give some amount of timeout to show notification
+      setTimeout(() => {
+        chrome.tabs.update(tab.id, {
+          url: chrome.runtime.getURL(
+            `pages/suspendedpage.html?url=${tab.url}&title=${tab.title}`
+          ),
+        });
+      }, 4000);
+
+      var opt = {
+        iconUrl: "images/get_started32.png",
+        type: "list",
+        title: "Primary Title",
+        message: "Primary message to display",
+        priority: 1,
+        items: [
+          { title: "Item1", message: "This is item 1." },
+          { title: "Item2", message: "This is item 2." },
+          { title: "Item3", message: "This is item 3." },
+        ],
+      };
+      chrome.notifications.create(`${Math.random()}`, opt, function callback() {
+        console.log("created!");
+        console.log("Last error:", chrome.runtime.lastError);
       });
     }
     if (message == "reload") {

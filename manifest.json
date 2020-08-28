@@ -30,7 +30,8 @@
     "activeTab",
     "declarativeContent",
     "storage",
-    "contextMenus"
+    "contextMenus",
+    "notifications"
   ],
   "icons": {
     "16": "images/get_started16.png",

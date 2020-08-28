@@ -126,6 +126,9 @@ chrome.runtime.onSuspend.addListener(function () {
 });
 ```
 
+manifest is verry very important to get it right:
+https://developer.chrome.com/extensions/manifest
+
 Video Link:
 
 https://www.youtube.com/watch?v=YQnRSa8MGwM
@@ -138,3 +141,5 @@ https://www.youtube.com/watch?v=YQnRSa8MGwM
 "js": ["pages/suspendedpage.js"]
 }
 ]
+
+Manifers
