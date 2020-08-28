@@ -80,6 +80,61 @@ https://developer.chrome.com/extensions/override
 
 The only occasion to keep a background script persistently active is if the extension uses chrome.webRequest API to block or modify network requests. The webRequest API is incompatible with non-persistent background pages
 
+You can respond to the events from various places, background files, popup or content scripts e.g
+
+```js
+chrome.runtime.onMessage.addListener(function(message, callback) {
+    if (message.data == “setAlarm”) {
+      chrome.alarms.create({delayInMinutes: 5})
+    } else if (message.data == “runLogic”) {
+      chrome.tabs.executeScript({file: 'logic.js'});
+    } else if (message.data == “changeColor”) {
+      chrome.tabs.executeScript(
+          {code: 'document.body.style.backgroundColor="orange"'});
+    };
+  });
+```
+
+Data has to persisted at timesso that information is not lost, even if the extension crashes.
+
+Make use of storage API for that. It's similar to other storage API on web, but asynchronous
+
+chrome.storage.local.set({variable: variableInformation});
+
+If an extension uses message passing, ensure all ports are closed.
+
+e.g
+
+```js
+chrome.runtime.onMessage.addListener(function (message, callback) {
+  if (message == "hello") {
+    sendResponse({ greeting: "welcome!" });
+  } else if (message == "goodbye") {
+    chrome.runtime.Port.disconnect();
+  }
+});
+```
+
+Life time of extension can be seen , by looking at task managers
+
+For last minute cleanup, similar to useEffect return statments , make use of below code
+
+```js
+chrome.runtime.onSuspend.addListener(function () {
+  console.log("Unloading.");
+  chrome.browserAction.setBadgeText({ text: "" });
+});
+```
+
 Video Link:
 
 https://www.youtube.com/watch?v=YQnRSa8MGwM
+
+// Used code
+
+"content_scripts": [
+{
+"matches": ["https://developer.chrome.com/*"],
+"js": ["pages/suspendedpage.js"]
+}
+]

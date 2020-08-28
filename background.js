@@ -34,7 +34,19 @@ chrome.runtime.onInstalled.addListener(function () {
     ]);
   });
 
-  chrome.runtime.onMessage.addListener(function (message, callback) {
+  chrome.runtime.onMessage.addListener(function (message, sender, callback) {
+    console.log("sender", sender);
+    console.log("message", message);
+
+    if (message.type === "trigger_redirection_tosuspended_page") {
+      // I need to create the redirection link for the
+      const { tab } = sender;
+      chrome.tabs.update(tab.id, {
+        url: chrome.runtime.getURL(
+          `pages/suspendedpage.html?url=${tab.url}&title=${tab.title}`
+        ),
+      });
+    }
     if (message == "reload") {
       chrome.tabs.executeScript({
         code: 'document.body.style.backgroundColor="orange"',
@@ -53,7 +65,14 @@ chrome.runtime.onInstalled.addListener(function () {
   chrome.contextMenus.create({
     id: "sampleContextMenu",
     title: "Sample Context Menu",
-    contexts: ["selection"],
+    contexts: ["selection"], // only show context menu on selection
+  });
+
+  // You can have more options to add the context menus. check the documentation  for
+  // chrome.contextMenus
+
+  chrome.contextMenus.onClicked.addListener(() => {
+    console.log("context menu clicked");
   });
 
   // This will run when a bookmark is created. need permission

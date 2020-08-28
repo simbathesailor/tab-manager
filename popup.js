@@ -42,7 +42,9 @@ changeColor.onclick = function (element) {
 
     chrome.tabs.update(tabs[0].id, {
       // url: `chrome-extension://${chrome.runtime.id}/pages/suspendedpage.html`,
-      url: chrome.runtime.getURL("pages/suspendedpage.html"),
+      url: chrome.runtime.getURL(
+        `pages/suspendedpage.html?url=${tabs[0].url}&title=${tabs[0].title}`
+      ),
     });
     // onclick='handleOnClick()'
     // function handleOnClick() {
