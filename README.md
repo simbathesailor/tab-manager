@@ -119,6 +119,10 @@ Life time of extension can be seen , by looking at task managers
 
 For last minute cleanup, similar to useEffect return statments , make use of below code
 
+## Very great set of boilerplate
+
+https://github.com/googlearchive/devtools-extension-boilerplate
+
 ```js
 chrome.runtime.onSuspend.addListener(function () {
   console.log("Unloading.");
@@ -128,6 +132,12 @@ chrome.runtime.onSuspend.addListener(function () {
 
 manifest is verry very important to get it right:
 https://developer.chrome.com/extensions/manifest
+
+## Devtools:
+
+https://developer.chrome.com/extensions/devtools_panels
+
+Each extension panel and sidebar is displayed as a separate HTML page. All extension pages displayed in the Developer Tools window have access to all modules in chrome.devtools API, as well as to chrome.extension API. Other extension APIs are not available to the pages within Developer Tools window, but you may invoke them by sending a request to the background page of your extension, similarly to how it's done in the content scripts.
 
 Video Link:
 
@@ -141,5 +151,3 @@ https://www.youtube.com/watch?v=YQnRSa8MGwM
 "js": ["pages/suspendedpage.js"]
 }
 ]
-
-Manifers

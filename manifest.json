@@ -42,7 +42,7 @@
 
   "content_security_policy": "object-src 'self'; child-src 'self'; default-src 'self';",
   "options_page": "options.html",
-  "devtools_page": "devtools.html",
+  "devtools_page": "devtools/devtools.html",
   "content_scripts": [
     {
       "matches": ["https://developer.chrome.com/*"],
