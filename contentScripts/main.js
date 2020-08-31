@@ -1,4 +1,4 @@
-let limit = 10000000000000000000; // in seconds
+let limit = 25 * 99999; // in seconds
 
 console.log("some value");
 
