@@ -38,6 +38,8 @@ chrome.runtime.onInstalled.addListener(function () {
     console.log("sender", sender);
     console.log("message", message);
 
+    // Checking communication between background and popup
+
     if (message.type === "trigger_redirection_tosuspended_page") {
       // I need to create the redirection link for the
       const { tab } = sender;
@@ -72,6 +74,18 @@ chrome.runtime.onInstalled.addListener(function () {
       chrome.tabs.executeScript({
         code: 'document.body.style.backgroundColor="orange"',
       });
+    }
+  });
+
+  chrome.runtime.onMessage.addListener(function (
+    request,
+    sender,
+    sendResponse
+  ) {
+    if (request.msg === "something_completed") {
+      //  To do something
+      console.log(request.data.subject);
+      console.log(request.data.content);
     }
   });
 

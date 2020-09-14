@@ -71,3 +71,27 @@ changeColor.onclick = function (element) {
     // });
   });
 };
+
+//
+// Recieving message from background
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  console.log(
+    sender.tab
+      ? "from a content script:" + sender.tab.url
+      : "from the extension"
+  );
+  if (request.greeting == "hello") sendResponse({ farewell: "goodbye" });
+});
+
+// The way you can talk to background.js
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("DOM fully loaded and parsed");
+  chrome.runtime.sendMessage({
+    msg: "something_completed",
+    data: {
+      subject: "Loading",
+      content: "Just completed!",
+    },
+  });
+});
