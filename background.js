@@ -86,6 +86,14 @@ chrome.runtime.onInstalled.addListener(function () {
       //  To do something
       console.log(request.data.subject);
       console.log(request.data.content);
+
+      chrome.runtime.sendMessage({
+        msg: "something_completed",
+        data: {
+          subject: "Loading",
+          content: "Just completed!",
+        },
+      });
     }
   });
 
